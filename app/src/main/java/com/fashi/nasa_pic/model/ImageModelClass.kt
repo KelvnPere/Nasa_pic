@@ -1,8 +1,3 @@
 package com.fashi.nasa_pic.model
 
-class ImageModelClass (
-    val title: String,
-    val description: String,
-    val imageUrl: String,
-    val fullImage: String
-)
+class ImageModelClass(val name: String,val image:String, val explanation: String, val date:String)
