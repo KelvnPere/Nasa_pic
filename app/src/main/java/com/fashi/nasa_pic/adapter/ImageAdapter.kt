@@ -1,17 +1,20 @@
 package com.fashi.nasa_pic.adapter
 
 import android.content.Context
-import android.graphics.drawable.Drawable
+import android.content.Intent
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
-import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.bumptech.glide.request.target.Target
+import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.fashi.nasa_pic.R
 import com.fashi.nasa_pic.model.ImageModelClass
+import com.fashi.nasa_pic.view.DetailScreen
+import java.io.ByteArrayOutputStream
 
 
 class ImageAdapter(
@@ -48,13 +51,47 @@ class ImageAdapter(
                 val itemViewHolder = viewHolder as ItemViewHolder
                 val images: ImageModelClass = listRecyclerItem[i] as ImageModelClass
                 ///itemViewHolder.title.setText(images.name)
-                Glide.with(context).load(images.image).into(itemViewHolder.image)
+                Glide.with(context).load(images.image)
+                    .diskCacheStrategy(DiskCacheStrategy.ALL)
+                    .into(itemViewHolder.image)
+
+                viewHolder.itemView.setOnClickListener(View.OnClickListener {
+                    val i = Intent(context, DetailScreen::class.java)
+                    //pass data though intent using puExtra
+                    i.putExtra("title", images.title)
+                    i.putExtra("explanation", images.explanation)
+                    i.putExtra("images", images.image)
+
+                    /*
+                            With Android 9, you cannot start an activity
+                             from a non-activity context unless
+                             you pass the intent flag FLAG_ACTIVITY_NEW_TASK.
+                             That's what the Flag was added.
+                             */i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                    context.startActivity(i)
+                })
             }
             else -> {
                 val itemViewHolder = viewHolder as ItemViewHolder
                 val images: ImageModelClass = listRecyclerItem[i] as ImageModelClass
                 //itemViewHolder.title.setText(images.name)
                 Glide.with(context).load(images.image).into(itemViewHolder.image)
+
+                viewHolder.itemView.setOnClickListener(View.OnClickListener {
+                    val i = Intent(context, DetailScreen::class.java)
+                    //pass data though intent using puExtra
+                    i.putExtra("title", images.title)
+                    i.putExtra("explanation", images.explanation)
+                    i.putExtra("images", images.image)
+
+                    /*
+                            With Android 9, you cannot start an activity
+                             from a non-activity context unless
+                             you pass the intent flag FLAG_ACTIVITY_NEW_TASK.
+                             That's what the Flag was added.
+                             */i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                    context.startActivity(i)
+                })
             }
         }
     }
@@ -66,4 +103,6 @@ class ImageAdapter(
     companion object {
         private const val TYPE = 1
     }
+
+
 }

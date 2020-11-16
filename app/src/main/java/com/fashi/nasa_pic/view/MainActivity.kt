@@ -1,11 +1,11 @@
 package com.fashi.nasa_pic.view
 
+
 import android.os.Bundle
 import android.util.Log
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.fashi.nasa_pic.R
 import com.fashi.nasa_pic.adapter.ImageAdapter
@@ -28,7 +28,6 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         mRecyclerView = findViewById<View>(R.id.image_rv) as RecyclerView
 
-
         // use this setting to improve performance if you know that changes
         // in content do not change the layout size of the RecyclerView
         mRecyclerView!!.setHasFixedSize(true)
@@ -39,7 +38,7 @@ class MainActivity : AppCompatActivity() {
         mRecyclerView!!.layoutManager = layoutManager
 
         // specify an adapter (see also next example)
-        mAdapter = ImageAdapter(this, viewItems,)
+        mAdapter = ImageAdapter(this, viewItems)
         mRecyclerView!!.adapter = mAdapter
         addItemsFromJSON()
     }
