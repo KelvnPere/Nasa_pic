@@ -1,14 +1,17 @@
 package com.fashi.nasa_pic.view
 
 
+import UserAdapter2
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.fashi.nasa_pic.R
-import com.fashi.nasa_pic.adapter.ImageAdapter
+import com.fashi.nasa_pic.adapter.UserAdapter
 import com.fashi.nasa_pic.model.ImageModelClass
 import org.json.JSONArray
 import org.json.JSONException
@@ -16,7 +19,6 @@ import java.io.BufferedReader
 import java.io.IOException
 import java.io.InputStream
 import java.io.InputStreamReader
-
 
 class MainActivity : AppCompatActivity() {
     private var mRecyclerView: RecyclerView? = null
@@ -38,9 +40,17 @@ class MainActivity : AppCompatActivity() {
         mRecyclerView!!.layoutManager = layoutManager
 
         // specify an adapter (see also next example)
-        mAdapter = ImageAdapter(this, viewItems)
+        mAdapter = UserAdapter(this, viewItems)
         mRecyclerView!!.adapter = mAdapter
         addItemsFromJSON()
+    }
+
+    private val imagesItemListener = UserAdapter2.OnClickListener { images ->
+        val intent = Intent(this, DetailScreen::class.java)
+        intent.putExtra("Intent to Detail Activity", images)
+       val position =  intent.getStringExtra("position")
+        Toast.makeText(this,"The position is $position", Toast.LENGTH_SHORT).show()
+        startActivity(intent)
     }
 
     private fun addItemsFromJSON() {
