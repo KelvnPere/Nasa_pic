@@ -19,3 +19,7 @@ This App uses following TechStack :
 - [x] [MVVM architecture Pattern](https://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93viewmodel)
 - [x] [Glide](https://github.com/bumptech/glide) (For Image Loading)
 - [x] [ViewPager 2](https://developer.android.com/reference/androidx/viewpager2/widget/ViewPager2)
+
+
+**Note:
+This Project is not meant to be shared with anyone outside the Obvious. 
