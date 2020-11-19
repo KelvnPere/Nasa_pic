@@ -21,5 +21,7 @@ This App uses following TechStack :
 - [x] [ViewPager 2](https://developer.android.com/reference/androidx/viewpager2/widget/ViewPager2)
 
 
+![giflink](https://media.giphy.com/media/usfVZZuwZLel2Dk7x2/giphy.gif)
+
 **Note:
 This Project is not meant to be shared with anyone outside the Obvious. 
