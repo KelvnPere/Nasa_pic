@@ -23,5 +23,3 @@ This App uses following TechStack :
 
 ![giflink](https://media.giphy.com/media/usfVZZuwZLel2Dk7x2/giphy.gif)
 
-**Note:
-This Project is not meant to be shared with anyone outside the Obvious. 
